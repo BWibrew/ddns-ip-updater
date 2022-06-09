@@ -9,7 +9,7 @@ CURRENT_IP=\"$(host "$DDNS_HOSTNAME"."$DDNS_DOMAIN" | grep -oE "$IP_REGEX")\"
 
 # Get current DNS A record
 echo "Gettting current DNS A record..."
-CURRENT_A_RECORD_RESPONSE=$(curl -X GET "$DNS_API_DOMAIN/zones/$DNS_API_ZONE_ID/dns_records/$DNS_API_RECORD_ID" \
+CURRENT_A_RECORD_RESPONSE=$(curl -s -X GET "$DNS_API_DOMAIN/zones/$DNS_API_ZONE_ID/dns_records/$DNS_API_RECORD_ID" \
      -H "Authorization: Bearer $DNS_API_ACCESS_TOKEN" \
      -H "Content-Type:application/json")
 
@@ -26,7 +26,7 @@ then
     echo "Current DNS A record ($CURRENT_A_RECORD) does not match current IP ($CURRENT_IP)"
     echo "Updating DNS A record..."
 
-    PATCH_RESPONSE=$(curl -X PATCH "$DNS_API_DOMAIN/zones/$DNS_API_ZONE_ID/dns_records/$DNS_API_RECORD_ID" \
+    PATCH_RESPONSE=$(curl -s -X PATCH "$DNS_API_DOMAIN/zones/$DNS_API_ZONE_ID/dns_records/$DNS_API_RECORD_ID" \
      -H "Authorization: Bearer $DNS_API_ACCESS_TOKEN" \
      -H "Content-Type:application/json" \
      --data "{\"content\":$CURRENT_IP}")
