@@ -17,6 +17,9 @@ CURRENT_A_RECORD_RESPONSE=$(curl -s -X GET "$DNS_API_DOMAIN/zones/$DNS_API_ZONE_
 if [ "$(echo "$CURRENT_A_RECORD_RESPONSE" | jq ".success")" = "true" ]
 then
     CURRENT_A_RECORD=$(echo "$CURRENT_A_RECORD_RESPONSE" | jq  ".result.content")
+else
+    echo "DNS A record check failed"
+    echo "$CURRENT_A_RECORD_RESPONSE"
 fi
 
 
