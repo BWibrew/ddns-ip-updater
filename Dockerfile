@@ -6,7 +6,7 @@ RUN apk update && \
         bind-tools \
         jq
 
-COPY ./files/update_ip.sh /etc/periodic/15min/update_ip
+COPY ./scripts/update_ip.sh /etc/periodic/15min/update_ip
 
 RUN chmod +x /etc/periodic/15min/update_ip
 
