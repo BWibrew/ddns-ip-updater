@@ -1,3 +1,3 @@
-# DDNS IP Updater
+# DNS Record Updater
 
-Automatically updates the DNS 'A' record for a server which uses a DDNS.
+Automatically updates the Cloudflare DNS 'A' record for a server which has a dynamic IP.
