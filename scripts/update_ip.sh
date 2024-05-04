@@ -23,7 +23,7 @@ IFS=', ' read -r -a record_ids <<< "$DNS_API_RECORD_IDS"
 for record_id in "${record_ids[@]}"
 do
     # Get current DNS A record
-    echo "Gettting current DNS A record for $record_id..."
+    echo "Getting current DNS A record for $record_id..."
     CURRENT_A_RECORD_RESPONSE=$(dns_record_request 'GET' "$record_id")
 
 
@@ -40,7 +40,7 @@ do
 
             if [ "$(echo "$PATCH_RESPONSE" | jq ".success")" = "true" ]
             then
-                echo "DNS A record updated sucessfully"
+                echo "DNS A record updated successfully"
             else
                 echo "DNS A record update failed"
                 echo "$PATCH_RESPONSE"
