@@ -19,12 +19,12 @@ jobs:
       - name: Sets Docker image name for latest
         if: ${{ github.ref_name == 'master' }}
         run: |
-          echo "DOCKER_IMAGE_NAME=bwibrew/ddns-ip-updater:latest" >> $GITHUB_ENV
+          echo "DOCKER_IMAGE_NAME=bwibrew/dns-record-updater:latest" >> $GITHUB_ENV
 
       - name: Sets Docker image name for tag
         if: ${{ github.ref_type == 'tag' }}
         run: |
-          echo "DOCKER_IMAGE_NAME=bwibrew/ddns-ip-updater:${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "DOCKER_IMAGE_NAME=bwibrew/dns-record-updater:${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
